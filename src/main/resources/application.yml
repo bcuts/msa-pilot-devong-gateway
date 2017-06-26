@@ -17,6 +17,10 @@ zuul:
       path: /purchases/**
       url: https://sdsact-msa-pilot-sales-api.herokuapp.com/
       sensitiveHeaders: Cookie,Set-Cookie,Authorization
+    auth:
+      path: /auth/**
+      url: https://devong-oauthserver.herokuapp.com
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
 
 ribbon:
   eureka:
