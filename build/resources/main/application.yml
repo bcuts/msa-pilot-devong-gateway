@@ -1,0 +1,27 @@
+zuul:
+  ignoredPatterns: /**/admin/**
+  routes:
+    users:
+      path: /myusers/**
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      serviceId: users
+    product:
+      path: /product/**
+      url: https://devongproduct.herokuapp.com/
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+    branch:
+      path: /branch/**
+      url: https://devong-branch.herokuapp.com/
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+    purchases:
+      path: /purchases/**
+      url: https://sdsact-msa-pilot-sales-api.herokuapp.com/
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+
+ribbon:
+  eureka:
+    enabled: false
+
+users:
+  ribbon:
+    listOfServers: example.com,google.com
