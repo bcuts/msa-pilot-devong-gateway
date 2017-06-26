@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.4.0.RELEASE'
+        springBootVersion = '1.4.4.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -12,17 +12,25 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
-apply plugin: 'io.spring.dependency-management'
-
-jar {
-    baseName = 'gateway'
-    version = '0.0.1-SNAPSHOT'
-}
+apply plugin: 'org.springframework.boot'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+springBoot{
+    mainClass = "com.sds.gateway.StartApplication"
+}
+
+jar {
+    manifest{
+        attributes 'Title' : 'devong-oAuth' , 'Version' : version , 'Main-Class' : 'com.sds.gateway.StartApplication'
+    }
+    baseName = 'msa-pliot-devong-gateway'
+    version =  '0.1.0'
+}
+task stage(dependsOn:['build','jar']){
+
+}
 repositories {
     mavenCentral()
 }
@@ -48,6 +56,3 @@ eclipse {
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.9'
-}
